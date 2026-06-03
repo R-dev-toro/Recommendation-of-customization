@@ -7,24 +7,29 @@
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f9f4ef; /* スープをイメージした背景色 */
+            background-color: #f9f4ef; 
             color: #333; 
             margin: 0; 
             padding: 20px; 
-            text-align: center; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .container { 
+            width: 100%;
             max-width: 500px; 
-            margin: 0 auto; 
             background: white; 
-            padding: 25px; 
+            padding: 30px 20px; 
             border-radius: 12px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+            text-align: center;
         }
-        h1 { color: #d32f2f; font-size: 1.5em; margin-bottom: 20px;}
-        h2 { font-size: 1.2em; color: #555; margin-bottom: 20px; line-height: 1.4; }
+        h1 { color: #d32f2f; font-size: 1.5em; margin-top: 0; margin-bottom: 25px;}
+        h2 { font-size: 1.2em; color: #444; margin-bottom: 20px; line-height: 1.4; }
+        
         .question-block { display: none; }
-        .question-block.active { display: block; animation: fadeIn 0.4s ease-in; }
+        .question-block.active { display: block; animation: fadeIn 0.4s ease-in-out; }
         
         .btn { 
             display: block; 
@@ -38,33 +43,38 @@
             font-size: 16px; 
             font-weight: bold;
             cursor: pointer; 
-            transition: background 0.2s; 
+            transition: all 0.2s; 
             line-height: 1.3;
         }
-        .btn:hover { background-color: #e68a00; }
+        .btn:hover { background-color: #e68a00; transform: translateY(-2px); }
+        .btn:active { transform: translateY(0); }
         
-        #result-section { display: none; }
         .result-box {
             background: #fff3e0;
             border: 2px solid #ff9800;
             border-radius: 8px;
-            padding: 15px;
+            padding: 20px;
             margin-top: 20px;
+            text-align: left;
         }
         .result-item { 
-            font-size: 1.2em; 
+            font-size: 1.1em; 
             font-weight: bold; 
-            margin: 10px 0; 
+            margin: 12px 0; 
             color: #d32f2f;
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 10px;
+            border-bottom: 1px dashed #ffcc80;
+            padding-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
         }
-        .result-item:last-child { border-bottom: none; }
-        .reset-btn { background-color: #757575; margin-top: 25px;}
+        .result-item span { color: #333; }
+        .result-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0;}
+        
+        .reset-btn { background-color: #757575; margin-top: 30px;}
         .reset-btn:hover { background-color: #616161; }
 
         @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(10px); } 
+            from { opacity: 0; transform: translateY(15px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
     </style>
@@ -76,39 +86,39 @@
         <!-- Q1 -->
         <div id="q1" class="question-block active">
             <h2>Q1. How tired are you today?</h2>
-            <button class="btn" onclick="nextQuestion(1, 'Extra', 'salt')">I sweated a lot! I need a salty punch.</button>
-            <button class="btn" onclick="nextQuestion(1, 'Normal', 'salt')">Just a normal day. A balanced flavor is fine.</button>
-            <button class="btn" onclick="nextQuestion(1, 'Light', 'salt')">I sat at a desk all day / Watch my sodium.</button>
+            <button class="btn" onclick="nextQuestion(1, 'Extra (こいめ)', 'salt')">I sweated a lot! I need a salty punch.</button>
+            <button class="btn" onclick="nextQuestion(1, 'Normal (ふつう)', 'salt')">Just a normal day. A balanced flavor is fine.</button>
+            <button class="btn" onclick="nextQuestion(1, 'Light (うすめ)', 'salt')">I sat at a desk all day / Watch my sodium.</button>
         </div>
 
         <!-- Q2 -->
         <div id="q2" class="question-block">
             <h2>Q2. How is your stomach feeling?</h2>
-            <button class="btn" onclick="nextQuestion(2, 'Extra', 'oil')">Perfect! Bring on the rich chicken oil.</button>
-            <button class="btn" onclick="nextQuestion(2, 'Normal', 'oil')">Normal. Standard richness is good.</button>
-            <button class="btn" onclick="nextQuestion(2, 'Less', 'oil')">A bit heavy / I prefer a lighter soup.</button>
+            <button class="btn" onclick="nextQuestion(2, 'Extra (おおめ)', 'oil')">Perfect! Bring on the rich chicken oil.</button>
+            <button class="btn" onclick="nextQuestion(2, 'Normal (ふつう)', 'oil')">Normal. Standard richness is good.</button>
+            <button class="btn" onclick="nextQuestion(2, 'Less (すくなめ)', 'oil')">A bit heavy / I prefer a lighter soup.</button>
         </div>
 
         <!-- Q3 -->
         <div id="q3" class="question-block">
             <h2>Q3. How fast do you usually eat noodles?</h2>
-            <button class="btn" onclick="nextQuestion(3, 'Firm', 'noodle')">I eat fast! / I love a chewy texture.</button>
-            <button class="btn" onclick="nextQuestion(3, 'Normal', 'noodle')">Average pace / No strong preference.</button>
-            <button class="btn" onclick="nextQuestion(3, 'Soft', 'noodle')">I take my time / I like soft noodles.</button>
+            <button class="btn" onclick="nextQuestion(3, 'Firm (かため)', 'noodle')">I eat fast! / I love a chewy texture.</button>
+            <button class="btn" onclick="nextQuestion(3, 'Normal (ふつう)', 'noodle')">Average pace / No strong preference.</button>
+            <button class="btn" onclick="nextQuestion(3, 'Soft (やわらかめ)', 'noodle')">I take my time / I like soft noodles.</button>
         </div>
 
         <!-- Q4 -->
         <div id="q4" class="question-block">
             <h2>Q4. How does "wrapping rice with soup-soaked seaweed" sound?</h2>
-            <button class="btn" onclick="showResult('Yes, please!')">Sounds amazing! I'm starving.</button>
-            <button class="btn" onclick="showResult('No thanks')">Just ramen is enough for me.</button>
+            <button class="btn" onclick="showResult('Yes, please! (あり)')">Sounds amazing! I'm starving.</button>
+            <button class="btn" onclick="showResult('No thanks (なし)')">Just ramen is enough for me.</button>
         </div>
 
         <!-- 結果画面 -->
         <div id="result-section" class="question-block">
-            <h2>Here is your perfect order! <br>(Show this to the staff)</h2>
+            <h2>Here is your perfect order! <br><span style="font-size: 0.8em; color: #777;">(Show this to the staff)</span></h2>
             <div class="result-box">
-                <div class="result-item">Noodle (麺): <span id="res-noodle"></span></div>
+                <div class="result-item">Noodles (麺): <span id="res-noodle"></span></div>
                 <div class="result-item">Saltiness (味): <span id="res-salt"></span></div>
                 <div class="result-item">Oil (油): <span id="res-oil"></span></div>
                 <div class="result-item">Rice (ライス): <span id="res-rice"></span></div>
@@ -118,28 +128,47 @@
     </div>
 
     <script>
-        // 回答を保存する変数
-        const order = { salt: '', oil: '', noodle: '', rice: '' };
+        // 回答を保存するデータ
+        const orderData = { salt: '', oil: '', noodle: '', rice: '' };
 
-        // 次の質問へ進む関数
-        function nextQuestion(currentQ, answer, type) {
-            order[type] = answer;
-            document.getElementById('q' + currentQ).classList.remove('active');
-            document.getElementById('q' + (currentQ + 1)).classList.add('active');
+        // 次の質問へ進む処理
+        function nextQuestion(currentStep, answer, type) {
+            orderData[type] = answer; // 回答を記録
+            
+            // 現在の質問を隠す
+            const currentBlock = document.getElementById('q' + currentStep);
+            if (currentBlock) {
+                currentBlock.classList.remove('active');
+            }
+            
+            // 次の質問を表示する
+            const nextBlock = document.getElementById('q' + (currentStep + 1));
+            if (nextBlock) {
+                nextBlock.classList.add('active');
+            }
         }
 
-        // 結果を表示する関数
+        // 最終結果を表示する処理
         function showResult(riceAnswer) {
-            order.rice = riceAnswer;
+            orderData.rice = riceAnswer; // 最後の回答を記録
             
-            document.getElementById('q4').classList.remove('active');
+            // Q4を隠す
+            const q4Block = document.getElementById('q4');
+            if (q4Block) {
+                q4Block.classList.remove('active');
+            }
             
-            document.getElementById('res-salt').innerText = order.salt;
-            document.getElementById('res-oil').innerText = order.oil;
-            document.getElementById('res-noodle').innerText = order.noodle;
-            document.getElementById('res-rice').innerText = order.rice;
+            // 結果をHTMLに挿入する
+            document.getElementById('res-noodle').innerText = orderData.noodle;
+            document.getElementById('res-salt').innerText = orderData.salt;
+            document.getElementById('res-oil').innerText = orderData.oil;
+            document.getElementById('res-rice').innerText = orderData.rice;
             
-            document.getElementById('result-section').classList.add('active');
+            // 結果画面を表示する
+            const resultBlock = document.getElementById('result-section');
+            if (resultBlock) {
+                resultBlock.classList.add('active');
+            }
         }
     </script>
 </body>
