@@ -8,7 +8,7 @@
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             /* 背景画像と、画像を暗くする黒の半透明フィルターを設定 */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('IMG_5789.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('IMG_5789.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* スクロールしても背景を固定 */
@@ -91,42 +91,42 @@
         <!-- Q1 -->
         <div id="q1" class="question-block active">
             <h2>Q1. How tired are you today?</h2>
-            <button class="btn" onclick="nextQuestion(1, 'Extra (こいめ)', 'salt')">I sweated a lot! I need a salty punch.</button>
-            <button class="btn" onclick="nextQuestion(1, 'Normal (ふつう)', 'salt')">Just a normal day. A balanced flavor is fine.</button>
-            <button class="btn" onclick="nextQuestion(1, 'Light (うすめ)', 'salt')">I sat at a desk all day / Watch my sodium.</button>
+            <button class="btn" onclick="nextQuestion(1, 'Extra', 'salt')">I sweated a lot! I need a salty punch.</button>
+            <button class="btn" onclick="nextQuestion(1, 'Normal', 'salt')">Just a normal day. A balanced flavor is fine.</button>
+            <button class="btn" onclick="nextQuestion(1, 'Light', 'salt')">I sat at a desk all day / Watch my sodium.</button>
         </div>
 
         <!-- Q2 -->
         <div id="q2" class="question-block">
             <h2>Q2. How is your stomach feeling?</h2>
-            <button class="btn" onclick="nextQuestion(2, 'Extra (おおめ)', 'oil')">Perfect! Bring on the rich chicken oil.</button>
-            <button class="btn" onclick="nextQuestion(2, 'Normal (ふつう)', 'oil')">Normal. Standard richness is good.</button>
-            <button class="btn" onclick="nextQuestion(2, 'Less (すくなめ)', 'oil')">A bit heavy / I prefer a lighter soup.</button>
+            <button class="btn" onclick="nextQuestion(2, 'Extra', 'oil')">Perfect! Bring on the rich chicken oil.</button>
+            <button class="btn" onclick="nextQuestion(2, 'Normal', 'oil')">Normal. Standard richness is good.</button>
+            <button class="btn" onclick="nextQuestion(2, 'Less', 'oil')">A bit heavy / I prefer a lighter soup.</button>
         </div>
 
         <!-- Q3 -->
         <div id="q3" class="question-block">
             <h2>Q3. How fast do you usually eat noodles?</h2>
-            <button class="btn" onclick="nextQuestion(3, 'Firm (かため)', 'noodle')">I eat fast! / I love a chewy texture.</button>
-            <button class="btn" onclick="nextQuestion(3, 'Normal (ふつう)', 'noodle')">Average pace / No strong preference.</button>
-            <button class="btn" onclick="nextQuestion(3, 'Soft (やわらかめ)', 'noodle')">I take my time / I like soft noodles.</button>
+            <button class="btn" onclick="nextQuestion(3, 'Firm', 'noodle')">I eat fast! / I love a chewy texture.</button>
+            <button class="btn" onclick="nextQuestion(3, 'Normal', 'noodle')">Average pace / No strong preference.</button>
+            <button class="btn" onclick="nextQuestion(3, 'Soft', 'noodle')">I take my time / I like soft noodles.</button>
         </div>
 
         <!-- Q4 -->
         <div id="q4" class="question-block">
             <h2>Q4. How does "wrapping rice with soup-soaked seaweed" sound?</h2>
-            <button class="btn" onclick="showResult('Yes, please! (あり)')">Sounds amazing! I'm starving.</button>
-            <button class="btn" onclick="showResult('No thanks (なし)')">Just ramen is enough for me.</button>
+            <button class="btn" onclick="showResult('Yes, please! ')">Sounds amazing! I'm starving.</button>
+            <button class="btn" onclick="showResult('No thanks ')">Just ramen is enough for me.</button>
         </div>
 
         <!-- 結果画面 -->
         <div id="result-section" class="question-block">
             <h2>Here is your perfect order! <br><span style="font-size: 0.8em; color: #777;">(Show this to the staff)</span></h2>
             <div class="result-box">
-                <div class="result-item">Noodles (麺): <span id="res-noodle"></span></div>
-                <div class="result-item">Saltiness (味): <span id="res-salt"></span></div>
-                <div class="result-item">Oil (油): <span id="res-oil"></span></div>
-                <div class="result-item">Rice (ライス): <span id="res-rice"></span></div>
+                <div class="result-item">Noodles: <span id="res-noodle"></span></div>
+                <div class="result-item">Saltiness: <span id="res-salt"></span></div>
+                <div class="result-item">Oil: <span id="res-oil"></span></div>
+                <div class="result-item">Rice: <span id="res-rice"></span></div>
             </div>
             <button class="btn reset-btn" onclick="location.reload()">Start Over</button>
         </div>
